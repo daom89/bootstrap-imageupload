@@ -38,7 +38,8 @@ if (typeof jQuery === 'undefined') {
         allowedFormats: [ 'jpg', 'jpeg', 'png', 'gif' ],
         maxWidth: 250,
         maxHeight: 250,
-        maxFileSizeKb: 2048
+        maxFileSizeKb: 2048,
+        urlFileDefault: false
     };
 
     // -----------------------------------------------------------------------------
@@ -72,6 +73,10 @@ if (typeof jQuery === 'undefined') {
         $submitUrlButton.off();
         $removeUrlButton.off();
 
+        if(options.urlFileDefault != false){
+            $fileTab.prepend(getImageThumbnailHtml(options.urlFileDefault));
+        }
+        
         $fileTabButton.on('click', function() {
             $(this).blur();
             showFileTab($fileTab);
